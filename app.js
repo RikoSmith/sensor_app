@@ -8,6 +8,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var sensorsRouter = require("./routes/sensors");
 var apiRouter = require("./routes/api");
+var cors = require("cors");
 
 const storage = require("node-persist");
 storage.init();
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cors());
 
 //global variables
 app.set("temp_server", "no data");
