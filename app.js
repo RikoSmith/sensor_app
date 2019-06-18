@@ -6,6 +6,11 @@ var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var sensorsRouter = require("./routes/sensors");
+var apiRouter = require("./routes/api");
+
+const storage = require("node-persist");
+storage.init();
 
 var app = express();
 
@@ -21,9 +26,13 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //global variables
 app.set("temp_server", "no data");
+app.set("db", storage);
 
+//routes
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/s", sensorsRouter);
+app.use("/api", apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

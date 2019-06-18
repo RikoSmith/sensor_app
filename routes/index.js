@@ -7,28 +7,4 @@ router.get("/", function(req, res, next) {
   console.log(req.rawHeaders);
 });
 
-router.get("/s/server_room", function(req, res, next) {
-  console.log(req.query);
-  var today = new Date();
-  var txt =
-    "Температура в серверной: " +
-    req.query.temp_c +
-    String.fromCharCode(176) +
-    "C  (посл. обновление: " +
-    today.getHours() +
-    ":" +
-    today.getMinutes() +
-    ":" +
-    today.getSeconds() +
-    " " +
-    today.getFullYear() +
-    "-" +
-    (today.getMonth() + 1) +
-    "-" +
-    today.getDate() +
-    ")";
-  req.app.set("temp_server", txt);
-  res.send("ok");
-});
-
 module.exports = router;
