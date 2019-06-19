@@ -3,7 +3,7 @@ var router = express.Router();
 
 //from server room's temperature sensor
 router.get("/server_room", function(req, res, next) {
-  console.log(req.query);
+  //console.log(req.query);
   var MyDate = new Date();
   var MyDateString;
 
@@ -37,15 +37,15 @@ router.get("/server_room", function(req, res, next) {
     if (typeof a === "undefined") {
       db.setItem("server_room", new Array());
     }
-    console.log("Before: ");
-    console.log(a);
+    //console.log("Before: ");
+    //console.log(a);
     if (a.length > 500) {
       a.shift();
     }
     a.push({ temp: req.query.temp_c, timestamp: MyDateString });
     db.updateItem("server_room", a);
-    console.log("After: ");
-    console.log(a);
+    //console.log("After: ");
+    //console.log(a);
     res.send("ok");
   });
 });
