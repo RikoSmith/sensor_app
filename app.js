@@ -28,6 +28,7 @@ app.use(cors());
 
 //global variables
 app.set("temp_server", "no data");
+app.set("temp_hall", "no data");
 app.set("db", storage);
 
 //routes
