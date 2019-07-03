@@ -55,7 +55,7 @@ router.get("/hall", function(req, res, next) {
   var MyDate = new Date();
   var MyDateString;
 
-  MyDate.setDate(MyDate.getDate() + 20);
+  MyDate.setDate(MyDate.getDate());
 
   MyDateString =
     ("0" + MyDate.getHours()).slice(-2) +
