@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+const axios = require("axios");
 
 //from server room's temperature sensor
 router.get("/server_room", function(req, res, next) {
@@ -50,6 +51,7 @@ router.get("/server_room", function(req, res, next) {
   });
 });
 
+//from main hall's temperature sensor
 router.get("/hall", function(req, res, next) {
   //console.log(req.query);
   var MyDate = new Date();
@@ -96,6 +98,20 @@ router.get("/hall", function(req, res, next) {
     //console.log(a);
     res.send("ok");
   });
+});
+
+//from main hall's temperature sensor
+router.get("/motion_warehouse", function(req, res, next) {
+  axios
+    .post(
+      "https://script.google.com/macros/s/AKfycbyXj3EqxTAHB2b8ajCPbBoUuFsqCfk2iZPrior1uQ/exec"
+    )
+    .then(response => {
+      res.send(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 });
 
 module.exports = router;
