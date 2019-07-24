@@ -26,6 +26,15 @@ router.get("/sensorData", function(req, res, next) {
       .catch(err => {
         res.send(err);
       });
+  } else if (req.query.name === "droom_one") {
+    db = req.app.get("db");
+    db.getItem("droom")
+      .then(a => {
+        res.send(a[a.length - 1]);
+      })
+      .catch(err => {
+        res.send(err);
+      });
   } else {
     res.send("Sensor not found");
   }
