@@ -173,4 +173,28 @@ router.get("/motion_warehouse", function(req, res, next) {
   }
 });
 
+//from pressure sensor 1
+router.get("/pressure1", function(req, res, next) {
+  let this_date = new Date();
+  let prev_date = req.app.get("prev_time");
+
+  if (this_date - prev_date >= 300000) {
+    req.app.set("prev_time", this_date);
+    axios
+      .post(
+        "https://script.google.com/macros/s/AKfycbyXj3EqxTAHB2b8ajCPbBoUuFsqCfk2iZPrior1uQ/exec"
+      )
+      .then(response => {
+        res.send(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  } else {
+    res.send(
+      "signal not sent, elapsed time: " + (this_date - prev_date) / 1000
+    );
+  }
+});
+
 module.exports = router;
