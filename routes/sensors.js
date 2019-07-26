@@ -206,7 +206,7 @@ router.get("/pressure1_check", function(req, res, next) {
     res.send("true");
     req.app.set("pres1", 0);
   } else {
-    console.log("request from alamrm: true");
+    console.log("request from alamrm: false");
     res.send("false");
   }
 });
