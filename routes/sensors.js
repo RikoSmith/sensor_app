@@ -181,6 +181,7 @@ router.get("/pressure1", function(req, res, next) {
   if (this_date - prev_date >= 300000) {
     req.app.set("prev_time", this_date);
     req.app.set("pres1", 1);
+    console.log(req.app.get("pres1"));
     axios
       .post(
         "https://script.google.com/macros/s/AKfycbwPZpb_glv1Ug4-DEBCVaeB8KSgl9Ow39HLkuNqTA/exec"
@@ -201,9 +202,11 @@ router.get("/pressure1", function(req, res, next) {
 //from pressure sensor 1
 router.get("/pressure1_check", function(req, res, next) {
   if (req.app.get("pres1") == 1) {
+    console.log("request from alamrm: true");
     res.send("true");
     req.app.set("pres1", 0);
   } else {
+    console.log("request from alamrm: true");
     res.send("false");
   }
 });
