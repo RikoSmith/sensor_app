@@ -30,6 +30,7 @@ app.use(cors());
 app.set("temp_server", "no data");
 app.set("temp_hall", "no data");
 app.set("temp_droom", "no data");
+app.set("pres1", 0);
 app.set("prev_time", new Date());
 app.set("db", storage);
 
