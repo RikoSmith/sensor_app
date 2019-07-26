@@ -182,7 +182,7 @@ router.get("/pressure1", function(req, res, next) {
     req.app.set("prev_time", this_date);
     axios
       .post(
-        "https://script.google.com/macros/s/AKfycbyXj3EqxTAHB2b8ajCPbBoUuFsqCfk2iZPrior1uQ/exec"
+        "https://script.google.com/macros/s/AKfycbwPZpb_glv1Ug4-DEBCVaeB8KSgl9Ow39HLkuNqTA/exec"
       )
       .then(response => {
         res.send(response.data);
