@@ -178,7 +178,7 @@ router.get("/pressure1", function(req, res, next) {
   let this_date = new Date();
   let prev_date = req.app.get("prev_time");
 
-  if (this_date - prev_date >= 300000) {
+  if (this_date - prev_date >= 60000) {
     req.app.set("prev_time", this_date);
     req.app.set("pres1", 1);
     console.log(req.app.get("pres1"));
